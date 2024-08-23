@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * The Riddler:
  * A puzzle by Zach Blick
@@ -69,7 +71,15 @@ public class Riddler {
     public String decryptFour(String encrypted) {
         String decrypted = "";
         // TODO: Complete the decryptFour() function.
-
+        Character decryptedChar = ' ';
+        char shiftedBy = 'j' - 'a';
+        char loopBy = 'R' - 'A';
+        for(int i = 0; i < encrypted.length(); i++)
+        {
+            decryptedChar = (char)((int)(encrypted.charAt(i) - 9919));
+            decrypted += decryptedChar.toString();
+        }
+        System.out.println(decrypted);
         return decrypted;
     }
 }
