@@ -1,5 +1,5 @@
 import java.io.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class RiddlerTester {
 
@@ -35,6 +35,7 @@ public class RiddlerTester {
         try {
             BufferedReader encryptedReader = new BufferedReader(new FileReader("test_files/" + text + "_encrypted.txt"));
             String line;
+            encrypted = "";
             while((line = encryptedReader.readLine()) != null) {
                 encrypted += line;
             }
@@ -43,4 +44,14 @@ public class RiddlerTester {
             e.printStackTrace();
         }
     }
+
+    public static void main(String [] args)
+    {
+        RiddlerTester rTest = new RiddlerTester();
+        rTest.testOne();
+        rTest.testTwo();
+        rTest.testThree();
+    }
+
+
 }
