@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Completed by: AGASTYA BRAHMBHATT
  */
 public class Riddler {
-
+    // Riddle One is a cesar shift
     public String decryptOne(String encrypted) {
         String decrypted = "";
         // TODO: Complete the decryptOne() function.
@@ -36,6 +36,7 @@ public class Riddler {
         return decrypted;
     }
 
+    // Riddle two uses ascii conversion to each character
     public String decryptTwo(String encrypted) {
         String decrypted = "";
         // TODO: Complete the decryptTwo() function.
@@ -52,6 +53,7 @@ public class Riddler {
         return decrypted;
     }
 
+    // Riddle three used 8 binary digits to represent each character
     public String decryptThree(String encrypted) {
         String decrypted = "";
         // TODO: Complete the decryptThree() function.
@@ -68,12 +70,11 @@ public class Riddler {
         return decrypted;
     }
 
+    // Riddle four uses a unicode shift of 9919, which using ascii, can give us each individual character.
     public String decryptFour(String encrypted) {
         String decrypted = "";
         // TODO: Complete the decryptFour() function.
         Character decryptedChar = ' ';
-        char shiftedBy = 'j' - 'a';
-        char loopBy = 'R' - 'A';
         for(int i = 0; i < encrypted.length(); i++)
         {
             decryptedChar = (char)((int)(encrypted.charAt(i) - 9919));

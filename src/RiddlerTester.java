@@ -45,9 +45,13 @@ public class RiddlerTester {
         }
     }
 
+    // Used to test out the four riddles
     public static void main(String [] args)
     {
         RiddlerTester rTest = new RiddlerTester();
+        rTest.testOne();
+        rTest.testTwo();
+        rTest.testThree();
         rTest.testFour();
     }
 
