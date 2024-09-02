@@ -10,14 +10,15 @@ import java.util.ArrayList;
  */
 public class Riddler {
     /*
-    Riddle 1 is a cesar shift, so I converted everything into ascii and depending on whether
-    it was punctuation, a capital letter, and/or if it was before or after R (so it could loop around),
-    I either shifted it up or down towards the correct ascii number it should be, and then converted it back into a char.
+    Riddle 1 is a cesar shift, so I converted everything into ascii
+    if it was punctuation, a capital letter, and/or space, then I keep the punctuation as is- I don't shift.
+    if it was before or after R, I use the remainder 26, so it automatically loops and shifts it correctly.
+    and then converted it back into a char.
      */
     public String decryptOne(String encrypted) {
         //New way of doing it
         String decrypted = "";
-        Character shifted, eChar = null;
+        Character shifted, eChar;
         int position = 0;
         for(int i = 0; i < encrypted.length(); i++){
             eChar = encrypted.charAt(i);
