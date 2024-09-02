@@ -12,7 +12,6 @@ public class Riddler {
     // Riddle One is a cesar shift
     public String decryptOne(String encrypted) {
         String decrypted = "";
-        // TODO: Complete the decryptOne() function.
         char shiftedBy = 'j' - 'a';
         char loopBy = 'R' - 'A';
         Character decryptedChar = ' ';
@@ -39,7 +38,6 @@ public class Riddler {
     // Riddle two uses ascii conversion to each character
     public String decryptTwo(String encrypted) {
         String decrypted = "";
-        // TODO: Complete the decryptTwo() function.
         Character decryptedChar = ' ';
         String[] numArray = encrypted.split(" ");
         String aTrim;
@@ -56,7 +54,6 @@ public class Riddler {
     // Riddle three used 8 binary digits to represent each character
     public String decryptThree(String encrypted) {
         String decrypted = "";
-        // TODO: Complete the decryptThree() function.
         Character decryptedChar = ' ';
         String[] numArray = encrypted.split("(?<=\\G.{8})");
         String aTrim;
@@ -73,7 +70,6 @@ public class Riddler {
     // Riddle four uses a unicode shift of 9919, which using ascii, can give us each individual character.
     public String decryptFour(String encrypted) {
         String decrypted = "";
-        // TODO: Complete the decryptFour() function.
         Character decryptedChar = ' ';
         for(int i = 0; i < encrypted.length(); i++)
         {
