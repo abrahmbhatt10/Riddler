@@ -17,18 +17,23 @@ public class Riddler {
     public String decryptOne(String encrypted) {
         //New way of doing it
         String decrypted = "";
-        Character shifted;
-        for(int i = 0; i < encrypted.length();i++){
-            if((encrypted.charAt(i) >= 'A') || (encrypted.charAt(i) <= 'Z'))
+        Character shifted, eChar = null;
+        int position = 0;
+        for(int i = 0; i < encrypted.length(); i++){
+            eChar = encrypted.charAt(i);
+            if(eChar.isUpperCase(eChar))
             {
-                shifted = (char)((encrypted.charAt(i) - 'A' + 9) % 26 + 'A');
-                decrypted += shifted.toString();
+                position = ((char)(eChar) - 'A' + 9) % 26;
+                shifted = (char)(position+'A');
             }
-            else if((encrypted.charAt(i) >= 'a') || (encrypted.charAt(i) <= 'z'))
-            {
-                shifted = (char)((encrypted.charAt(i) - 'a' + 9) % 26 + 'a');
-                decrypted += shifted.toString();
+            else if(eChar.isLowerCase(eChar)){
+                position = ((char) (eChar) - 'a' + 9) % 26;
+                shifted = (char)(position+'a');
             }
+            else {
+                shifted = eChar;
+            }
+            decrypted += shifted.toString();
         }
         /* old way of doing it
         String decrypted = "";
@@ -76,19 +81,52 @@ public class Riddler {
         return decrypted;
     }
 
+    // This code that was gone over in class which I did not write
+    // converts String to integer by using a more efficient way
+    //Than parseInt()
+
+    public int binaryStringToInt(String bits){
+        int n = 0;
+        int len = bits.length();
+        for(int i = 0; i < len; i++)
+        {
+            if(bits.charAt(i) == '1')
+            {
+                n += (1 << (len - i - 1));
+            }
+        }
+        return n;
+    }
+
     /*
        Riddle three used 8 binary digits to represent each character,
        so decryptThree uses a regex of separating into 8 binary characters
        in order to convert each binary character using parseInt()
      */
     public String decryptThree(String encrypted) {
+       //New way of doing it
+        String decrypted = "";
+        Character decryptedChar = ' ';
+        String[] numArray = encrypted.split("(?<=\\G.{8})");
+        String aTrim;
+        for(String a : numArray)
+        {
+            aTrim = a.trim();
+            decryptedChar = (char)binaryStringToInt(aTrim);
+            decrypted += decryptedChar.toString();
+        }
+        System.out.println(decrypted);
+        return decrypted;
+
+        /*
+         Old way of doing it:
         String decrypted = "";
         Character decryptedChar = ' ';
         /*
         \\G does a global match and not just a match in the beginning of the string.
         The regular expression below is splitting the string matching any characters
         into substrings of 8 characters.
-         */
+
 
         String[] numArray = encrypted.split("(?<=\\G.{8})");
         String aTrim;
@@ -100,6 +138,7 @@ public class Riddler {
         }
         System.out.println(decrypted);
         return decrypted;
+        */
     }
 
     /*
